@@ -1,0 +1,31 @@
+*
+!*.*
+!*/
+!Makefile
+
+# Development
+.vscode
+.cache
+*.json
+*.txt
+*.log
+
+# Prerequisites
+*.d
+
+# Build output
+*.asm
+*.img
+*.sym
+*.S
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+*.app
