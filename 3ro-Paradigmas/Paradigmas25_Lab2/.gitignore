@@ -1,0 +1,10 @@
+# Archivos generados
+bin/
+target/
+.classpath
+.project
+.settings/
+.vscode/
+*.jar
+*.class
+*.log
