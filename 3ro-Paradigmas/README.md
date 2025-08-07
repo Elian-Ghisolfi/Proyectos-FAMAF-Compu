@@ -1,5 +1,4 @@
 # Laboratorios de Paradigmas de la Programación 
- Claro, aquí tenés un **resumen claro y estructurado** de los tres proyectos, enfocados en paradigmas de programación, procesamiento de datos y diseño de lenguajes:
 Estos proyectos abordan distintos paradigmas de programación (funcional, orientado a objetos y procesamiento distribuido), con el objetivo de resolver problemas reales mediante herramientas y enfoques modernos.
 
 ---
