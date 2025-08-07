@@ -1,5 +1,4 @@
 # Laboratorios de Redes y Sistemas Distribuídos
-Perfecto, aquí tenés un **resumen claro y estructurado** de los textos que compartiste, agrupando por cada uno de los proyectos:
 
 Este conjunto de proyectos se enfoca en el desarrollo de aplicaciones de red y simulaciones, abarcando desde la **capa de aplicación** hasta la **capa de red** del modelo OSI, usando tecnologías como **sockets en Python**, **Flask**, y el simulador **OMNeT++**.
 
