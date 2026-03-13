@@ -1,0 +1,17 @@
+ADD X15, XZR, XZR // X15 = 0
+loop:
+	ADD X15, X15, X17 
+	SUB X16, X16, X1 
+	CBZ X16, endloop 
+	CBZ XZR, loop 
+endloop:
+	STUR X15, [X0, #0]
+
+
+ROM [0:5] ='{N'('h8b1f03ef),
+             N'('h8b1101ef),
+             N'('hcb010210),
+             N'('hb4000050),
+             N'('hb4ffffbf),
+             N'('hf800000f)
+            };

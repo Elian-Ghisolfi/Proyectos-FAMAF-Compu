@@ -1,0 +1,19 @@
+	ADD x2, xzr, xzr
+loop:
+	SUB x3, x0, x30
+	CBZ x3, end
+	STUR x0, [x2, #0]
+	ADD x0, x1, x0
+	ADD x2, x2, x8
+	CBZ xzr, loop
+end:
+
+
+
+ROM [0:6] ='{ N'('h8b1f03e2),
+              N'('hcb1e0003),
+              N'('hb40000a3),
+              N'('hf8000040),
+              N'('h8b000020),
+              N'('h8b080042),
+              N'('hb4ffff7f) }; 

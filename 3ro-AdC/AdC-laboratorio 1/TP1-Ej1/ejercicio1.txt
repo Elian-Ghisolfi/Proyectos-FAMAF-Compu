@@ -1,0 +1,165 @@
+/*
+Registros (Pre-cargados) en RegFile.sv:
+X9: Contiene 1
+X10: Contiene 0x8000 (LEDs)
+X25: Contiene 0x400 (Loop)
+
+X15: Patrón DERECHO (Inicia en 0)
+X16: Patrón IZQUIERDO (Inicia en 0)
+X21: Patrón DERECHA móvil (Inicia en 0x0001)
+X23: Patrón IZQUIERDA móvil (Inicia en 0x8000)
+X26: Patrón final combinado
+
+segundo patron
+x4: Contiene 0x8008(Switch)
+X5: Variable para simular switches (0x0)
+x6: patron derecha móvil (Inicia en 0x00ff)
+x7: patron izquierda móvil (Inicia en 0xff00) 
+x3: Patron derecho (Inicia en 0)
+x2: Patron izquierd (Inicia en 0) 
+x28: pivote (0x7)
+x29: pivote (0x7)
+*/
+    stur x5,[x4, #0]
+switch:  
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    LDUR x5, [x4, #0]
+ 	add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    cbz	x5, switch
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+
+main_loop:
+    orr	x15, x15, x21
+    orr	x16, x16, x23
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    orr	x26, x15, x16
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    stur x26, [x10, #0]
+    add	x20, x25, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+
+wait_loop:
+    sub	x20, x20, x9
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    cbz	x20, wait_end
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    cbz	xzr, wait_loop
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+
+wait_end:
+    sub	x28, x28, x1
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    cbz	x28, end
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    LSL X21, X21, #1
+    LSR X23, X23, #1
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    cbz	xzr, main_loop
+
+end:
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    LDUR x5, [x4, #0]
+ 	add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    cbz	x5,  second_bucle
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    cbz	xzr,  end
+    add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+
+second_bucle:
+    and	x3, x3, x6
+    and	x2, x2, x7
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    orr	x26, x2, x3
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    stur x26, [x10, #0]
+    add	x20, x25, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+
+second_wait_loop:
+    sub	x20, x20, x9
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    cbz	x20, second_wait_end
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    cbz	xzr, second_wait_loop
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+    add	xzr, xzr, xzr
+
+second_wait_end:
+    sub	x29, x29, x9
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    cbz	x22, end
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    LSR X6, x6, #1
+    LSL x7, x7, #1
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    cbz	xzr, second_bucle
+
+end_main:
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+    cbz	xzr, end_main
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
+ 	add	xzr, xzr, xzr
